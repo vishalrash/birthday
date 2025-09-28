@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Heart animations */
+@keyframes floatHeart {
+  0% {
+    transform: 
+      translateY(100vh) 
+      translateX(calc(-50% + 0px))
+      rotate(0deg)
+      scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+    transform: 
+      translateY(90vh)
+      translateX(calc(-50% + var(--start-x)))
+      rotate(10deg)
+      scale(0.8);
+  }
+  50% {
+    transform: 
+      translateY(50vh)
+      translateX(calc(-50% + calc(var(--start-x) * 0.5)))
+      rotate(180deg)
+      scale(1);
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: 
+      translateY(-10vh)
+      translateX(calc(-50% + calc(var(--start-x) * 0.2)))
+      rotate(360deg)
+      scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes physicsFloat {
+  0% {
+    transform:
+      translateY(100vh)
+      translateX(calc(-50% + var(--start-x)))
+      rotate(0deg);
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  }
+  10% {
+    opacity: 0.8;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  100% {
+    transform:
+      translateY(-10vh)
+      translateX(calc(-50% + var(--end-x)))
+      rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* Other styles */
+.perspective {
+  perspective: 1200px;
+}
+
+.transform-style {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.group:hover .my-flip {
+  transform: rotateY(180deg);
+}
+
+.my-flip {
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px #ff7eb3, 0 0 20px #ff758c, 0 0 30px #fd3a69;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 192, 203, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 105, 180, 0.6);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 105, 180, 0.8);
+}
+/* Add to index.css */
+.heart {
+  filter: 
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.7))
+    drop-shadow(0 0 4px var(--heart-color));
+  transition: all 0.3s ease;
+}
+
+.heart:hover {
+  transform: scale(1.2) !important;
+  filter: 
+    drop-shadow(0 0 4px white)
+    drop-shadow(0 0 8px var(--heart-color));
+}
+/* ===== Letter Flipping Styles ===== */
+.perspective {
+  perspective: 1000px;
+}
+
+.transform-style {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.letter-content {
+  transform: translateZ(50px);
+  transition: all 0.5s ease;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8) translateZ(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateZ(50px);
+    opacity: 1;
+  }
+}
+
+.letter-open .letter-content {
+  animation: popIn 0.7s ease-out forwards;
+}
+
+/* ===== Your Existing Animations ===== */
+.glow-text {
+  text-shadow: 0 0 10px #ff7eb3, 0 0 20px #ff758c, 0 0 30px #fd3a69;
+}
+/* ... rest of your existing styles ... */
+.music-button {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
